@@ -86,9 +86,20 @@ def export_bundle(
     else:
         rid = str(run_id)
 
+    # Sanitize the run_id
     rid_sanitized = sanitize_run_id(rid)
+
+    # Check if the sanitized run_id is valid
     if not rid_sanitized:
         raise ExportError(f"Invalid run_id {rid!r} (cannot sanitize to a non-empty folder name)")
+
+    # Correctly print the sanitized run_id
+    print(f"Sanitized run_id: {rid_sanitized}")
+
+    out_root = Path(out_root)
+    run_dir = out_root / rid_sanitized
+
+    print(f"Exporting to: {run_dir}")
 
     fmt = tuple(str(f).lower() for f in formats)
     allowed = {"csv", "parquet"}
