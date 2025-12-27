@@ -20,6 +20,7 @@ def test_openmeteo_pipeline_smoke(tmp_path: Path):
     so this will still pull a full year of hourly data. That's OK for manual runs.
     """
     cfg = {
+        "run_id": "manual_smoke",
         "project": {
             "id": "manual-smoke",
             "name": "Manual Smoke Test",

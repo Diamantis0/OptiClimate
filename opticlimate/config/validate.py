@@ -70,6 +70,18 @@ def validate_config(cfg: Dict[str, Any]) -> None:
         raise ConfigError("Config must be a dict")
 
     # -------------------------
+    # run_id (required)
+    # -------------------------
+    rid = cfg.get("run_id")
+    if not isinstance(rid, str):
+        raise ConfigError("run_id is required and must be a string")
+    if not rid.strip():
+        raise ConfigError("run_id must be a non-empty string")
+    # Optional max-length guardrail (helps avoid path limits)
+    if len(rid.strip()) > 200:
+        raise ConfigError("run_id is too long (max 200 characters)")
+
+    # -------------------------
     # Strict-mode legacy input rejection
     # -------------------------
     legacy = cfg.get('_legacy_inputs')

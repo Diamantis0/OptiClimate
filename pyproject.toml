@@ -7,6 +7,11 @@ name = "opticlimate"
 version = "0.1.0"
 description = "OptiClimate weather optimization engine"
 requires-python = ">=3.9"
+dependencies = [
+  "pandas>=1.5",
+  "pyarrow>=12",  # required for Parquet exports
+  "PyYAML>=6",    # allow YAML configs
+]
 
 [tool.setuptools]
 packages = ["opticlimate"]

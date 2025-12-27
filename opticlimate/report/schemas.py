@@ -163,6 +163,8 @@ def validate_bundle(
 def make_meta_skeleton(
     *,
     run_id: str,
+    run_id_raw: str | None = None,
+    run_id_sanitized: str | None = None,
     generated_at_utc: str,
     location_name: str,
     timezone: str,
@@ -173,7 +175,7 @@ def make_meta_skeleton(
     config_hash: str,
     rows_hourly: int,
 ) -> Dict[str, Any]:
-    return {
+    meta = {
         "run_id": run_id,
         "generated_at_utc": generated_at_utc,
         "location_name": location_name,
@@ -185,3 +187,10 @@ def make_meta_skeleton(
         "config_hash": config_hash,
         "rows_hourly": int(rows_hourly),
     }
+
+    if run_id_raw is not None:
+        meta["run_id_raw"] = run_id_raw
+    if run_id_sanitized is not None:
+        meta["run_id_sanitized"] = run_id_sanitized
+
+    return meta

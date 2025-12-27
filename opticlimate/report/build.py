@@ -10,6 +10,7 @@ import json
 import pandas as pd
 
 from opticlimate.report import schemas
+from opticlimate.utils.run_id import sanitize_run_id
 from opticlimate.report.aggregate_core import summary_monthly, summary_run, summary_yearly
 from opticlimate.report.aggregate_curves import curves_cumulative_daily, curve_reliability_monthly
 from opticlimate.report.aggregate_loss import loss_by_param_monthly, loss_by_param_yearly
@@ -221,8 +222,12 @@ def build_core_bundle(
     end = str(analysis_period.get("end_date", analysis_period.get("period_end", "")))
 
     config_hash = _hash_config(cfg)
+    run_id_raw = str(run_id)
+    run_id_sanitized = sanitize_run_id(run_id_raw) or run_id_raw
     meta = schemas.make_meta_skeleton(
-        run_id=run_id,
+        run_id=run_id_sanitized,
+        run_id_raw=run_id_raw,
+        run_id_sanitized=run_id_sanitized,
         generated_at_utc=pd.Timestamp.utcnow().isoformat(),
         location_name=loc_name,
         timezone=tz,

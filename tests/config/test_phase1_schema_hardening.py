@@ -7,6 +7,7 @@ from opticlimate.config.validate import validate_config, ConfigError
 
 def _base_cfg():
     return {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",

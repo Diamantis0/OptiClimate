@@ -70,6 +70,13 @@ def normalize_config(raw: Dict[str, Any]) -> Dict[str, Any]:
     # -------------------------
     # Top-level defaults
     # -------------------------
+    cfg.setdefault("run_id", "")
+    if isinstance(cfg.get("run_id"), str):
+        cfg["run_id"] = cfg["run_id"].strip()
+    elif cfg.get("run_id") is not None:
+        # Best-effort coerce to string; validation will enforce non-empty.
+        cfg["run_id"] = str(cfg["run_id"]).strip()
+
     cfg.setdefault("required_parameters", [])
     cfg.setdefault("scenarios", [])
     # new scenario-set mode inputs (optional)

@@ -15,6 +15,7 @@ from opticlimate.report.build import build_core_bundle
 
 def _base_cfg():
     return {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",

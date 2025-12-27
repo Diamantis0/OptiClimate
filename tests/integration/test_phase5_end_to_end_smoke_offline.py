@@ -13,6 +13,7 @@ from opticlimate.report.build import build_core_bundle
 
 def test_end_to_end_smoke_offline_multiscenario():
     raw_cfg = {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",

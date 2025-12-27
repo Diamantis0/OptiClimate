@@ -13,6 +13,7 @@ from opticlimate.report.build import build_core_bundle
 
 def _cfg_standard_3():
     return {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",

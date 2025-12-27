@@ -13,6 +13,7 @@ from opticlimate.config.validate import validate_config
 
 def _cfg_with_thresholds(thresholds: dict, required: list[str]):
     return {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",

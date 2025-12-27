@@ -9,6 +9,7 @@ from opticlimate.config.validate import validate_config
 def base_cfg():
     """Return a strict-schema config baseline that passes validation."""
     return {
+        "run_id": "demo_project",
         "project": {
             "id": "demo",
             "name": "Demo",
