@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opticlimate"
+version = "0.1.0"
+description = "OptiClimate weather optimization engine"
+requires-python = ">=3.9"
+
+[tool.setuptools]
+packages = ["opticlimate"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "manual: tests that call external services (not run in CI by default)"
+]

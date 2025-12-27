@@ -1,0 +1,65 @@
+project:
+  id: demo
+  name: Demo Project
+  activity_type: ""
+  units: metric
+  granularity: hourly
+
+  location:
+    latitude: 39.7392
+    longitude: -104.9903
+    timezone: America/Denver
+    elevation: null
+
+  analysis_period:
+    period_start: "01-01"
+    period_end: "12-31"
+    analysis_end_year: 2024
+    historic_years: 3
+
+required_parameters:
+  - temperature
+  - wind_speed
+  - precipitation
+
+# Allowed: base_only, standard_3, standard_3_plus
+scenario_mode: standard_3
+
+# Scenario-first thresholds (new schema)
+weather_thresholds:
+  base:
+    temperature:
+      min: -10
+      max: 35
+    wind_speed:
+      max: 20
+    precipitation:
+      max: 2.0
+
+  conservative:
+    temperature:
+      min: -5
+      max: 32
+    wind_speed:
+      max: 15
+    precipitation:
+      max: 1.0
+
+  optimistic:
+    temperature:
+      min: -15
+      max: 38
+    wind_speed:
+      max: 25
+    precipitation:
+      max: 3.0
+
+operational_window:
+  calendar_model: all_days
+  daylight_model: none
+  time_bounds:
+    start: fixed_time
+    start_time: "09:00"
+    end: fixed_time
+    end_time: "17:00"
+  weekly_overrides: {}
